@@ -11,88 +11,6 @@ html {
     /* prevent scroll */
 }
 
-.blob {
-    position: fixed;
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--grad1, #ff6b6b), var(--grad2, #f7d794));
-    filter: blur(100px);
-    opacity: 0.65;
-    z-index: 0;
-    pointer-events: none;
-}
-
-/* Top-left blob */
-.blob1 {
-    top: -80px;
-    left: -80px;
-    animation: floatTopLeft 18s infinite ease-in-out alternate;
-}
-
-/* Bottom-right blob */
-.blob2 {
-    bottom: -80px;
-    right: -80px;
-    animation: floatBottomRight 18s infinite ease-in-out alternate;
-}
-
-/* Top-left fluid movement */
-@keyframes floatTopLeft {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    25% {
-        transform: translate(50px, 30px) scale(1.1);
-    }
-
-    50% {
-        transform: translate(80px, 60px) scale(0.95);
-    }
-
-    75% {
-        transform: translate(40px, 20px) scale(1.05);
-    }
-
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-}
-
-/* Bottom-right — mirrors top-left */
-@keyframes floatBottomRight {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    25% {
-        transform: translate(-50px, -30px) scale(1.1);
-    }
-
-    50% {
-        transform: translate(-80px, -60px) scale(0.95);
-    }
-
-    75% {
-        transform: translate(-40px, -20px) scale(1.05);
-    }
-
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-}
-
-/* 📱 Mobile responsiveness */
-@media (max-width: 768px) {
-    .blob {
-        width: 200px;
-        height: 200px;
-        filter: blur(80px);
-        opacity: 0.55;
-    }
-}
-
 /* Countdown styling */
 #countdown {
     display: flex;
@@ -122,5 +40,35 @@ html {
     .count-box {
         min-width: 100px;
         font-size: 1.5rem;
+    }
+}
+
+/* Gradient blob */
+.blob {
+    position: fixed;
+    width: 500px;
+    /* larger size */
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--grad1, #ff6b6b), var(--grad2, #f7d794));
+    filter: blur(150px);
+    opacity: 0.6;
+    z-index: 0;
+    pointer-events: none;
+    /* Start position */
+    top: 50px;
+    left: 50px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .blob {
+        width: 300px;
+        height: 300px;
+        filter: blur(100px);
+        opacity: 0.5;
+        top: 20px;
+        left: 20px;
+
     }
 }
