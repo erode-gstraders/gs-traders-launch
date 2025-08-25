@@ -5,21 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GS Traders Launch</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/gsl.png" type="image/png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/gsl.png">
 
+    <!-- Favicon -->
+    <link rel="icon" href="assets/gsl.png" type="image/png">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Corner gradient blobs -->
-    <div class="blob blob1"></div>
+    <!-- Moving gradient blob -->
+    <div class="blob"></div>
 
     <!-- Main content -->
     <div class="container d-flex flex-column justify-content-center align-items-center text-center vh-100">
-        <div id="logoContainer"></div>
+        <img src="assets/gsl.png" alt="GS Traders Logo" class="mb-3" style="max-width:200px;">
         <h1 class="display-3 text-white mb-3">GS Traders</h1>
         <p class="lead text-white mb-5">Premium Dry Fruits & Nuts – Available exclusively online from September 01.</p>
 
@@ -31,61 +37,8 @@
         </div>
     </div>
 
+    <!-- Custom JS -->
     <script src="script.js"></script>
-    <script>
-        // Load admin settings dynamically
-        window.addEventListener('load', () => {
-            // --- Logo ---
-            const logoData = localStorage.getItem('gsLogo');
-            const logoPos = localStorage.getItem('gsLogoPosition') || 'center';
-            const logoMaxWidth = localStorage.getItem('gsLogoSize') || 150;
-
-            document.querySelectorAll('.logo-admin').forEach(el => el.remove()); // remove old logos
-
-            if (logoData) {
-                const logoImg = document.createElement('img');
-                logoImg.src = logoData;
-                logoImg.style.maxWidth = logoMaxWidth + 'px';
-                logoImg.classList.add('mb-3', 'logo-admin');
-
-                const container = document.getElementById('logoContainer');
-
-                switch (logoPos) {
-                    case 'top':
-                        document.body.prepend(logoImg);
-                        break;
-                    case 'left':
-                        logoImg.style.float = 'left';
-                        container.appendChild(logoImg);
-                        break;
-                    case 'right':
-                        logoImg.style.float = 'right';
-                        container.appendChild(logoImg);
-                        break;
-                    case 'above':
-                        container.prepend(logoImg);
-                        break;
-                    default:
-                        container.appendChild(logoImg); // center
-                }
-            }
-
-            // --- Font ---
-            const gsFont = localStorage.getItem('gsFont');
-            if (gsFont) document.body.style.fontFamily = gsFont;
-
-            // --- Gradient colors ---
-            const g1 = localStorage.getItem('grad1') || '#ff6b6b';
-            const g2 = localStorage.getItem('grad2') || '#f7d794';
-            document.querySelectorAll('.blob').forEach(blob => {
-                blob.style.background = `linear-gradient(45deg, ${g1}, ${g2})`;
-            });
-
-            // --- Countdown date ---
-            const savedDate = localStorage.getItem('launchDate');
-            window.launchDate = savedDate ? new Date(savedDate).getTime() : new Date("2025-09-10T10:00:00").getTime();
-        });
-    </script>
 </body>
 
 </html>
